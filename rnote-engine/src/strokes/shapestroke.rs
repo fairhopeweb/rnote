@@ -45,7 +45,7 @@ impl StrokeBehaviour for ShapeStroke {
 
         if viewport.contains(&bounds) {
             Ok(GeneratedStrokeImages::Full(vec![
-                render::Image::gen_with_piet(
+                render::Image::gen_with_piet_gpu(
                     |piet_cx| self.draw(piet_cx, image_scale),
                     bounds,
                     image_scale,
@@ -53,7 +53,7 @@ impl StrokeBehaviour for ShapeStroke {
             ]))
         } else {
             Ok(GeneratedStrokeImages::Partial {
-                images: vec![render::Image::gen_with_piet(
+                images: vec![render::Image::gen_with_piet_gpu(
                     |piet_cx| self.draw(piet_cx, image_scale),
                     viewport,
                     image_scale,
